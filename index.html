@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- JURUS ANTI-CACHE UNTUK GITHUB PAGES -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>SI SPJ - KPU Bolmut</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/4/46/KPU_Logo.svg">
+    <style>
+        /* CSS ini memastikan aplikasi Anda tampil layar penuh tanpa terpotong */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Menghilangkan scrollbar ganda */
+            background-color: #f1f5f9;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Menghilangkan garis tepi */
+        }
+    </style>
+</head>
+<body>
+    <!-- LINK GOOGLE SCRIPT SI SPJ -->
+    <iframe src="https://script.google.com/macros/s/AKfycbxyRn_IiRxfxdsjaHyK7a12y7aOk0xmjoA2wIMjv9i-deJhEkLIki46NjUV0xGkhvlM/exec"></iframe>
+
+    <!-- SCRIPT AUTO-REFRESH DARI SATU RUMAH -->
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            // Jika mendeteksi parameter 'v' (waktu) dari link Satu Rumah
+            if (urlParams.has('v')) {
+                const currentVersion = urlParams.get('v');
+                const lastVersion = sessionStorage.getItem('appVersion');
+                
+                // Jika versinya berbeda, paksa muat ulang halaman dari server
+                if (lastVersion !== currentVersion) {
+                    sessionStorage.setItem('appVersion', currentVersion);
+                    window.location.reload(true); 
+                }
+            }
+        };
+    </script>
+</body>
+</html>
